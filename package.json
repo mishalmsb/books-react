@@ -1,16 +1,29 @@
 {
-  "name": "books",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+	"name": "books",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"lodash": "^4.17.5",
+		"node-sass-chokidar": "^1.2.1",
+		"npm-run-all": "^4.1.2",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"react-redux": "^5.0.7",
+		"react-router-dom": "^4.2.2",
+		"react-scripts": "1.1.1",
+		"redux": "^3.7.2"
+	},
+	"scripts": {
+		"build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+		"watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+		"start-js": "react-scripts start",
+		"start": "npm-run-all -p watch-css start-js",
+		"build-js": "react-scripts build",
+		"build": "npm-run-all build-css build-js",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"devDependencies": {
+		"redux-devtools": "^3.4.1"
+	}
 }
