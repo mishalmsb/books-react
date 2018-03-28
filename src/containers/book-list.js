@@ -5,7 +5,7 @@ class BookList extends Component {
 	renderList() {
 		return this.props.books.map((book, i) => {
 			return (
-				<li key="i+1" className="list-group-item">
+				<li key={i + 1} className="list-group-item">
 					{book.title}
 				</li>
 			);
@@ -23,4 +23,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(null, mapStateToProps)(BookList);
+export default connect(mapStateToProps)(BookList);
